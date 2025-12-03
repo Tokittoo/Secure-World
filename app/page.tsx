@@ -32,6 +32,7 @@ import {
   FileCheck,
   AlertTriangle,
 } from "lucide-react"
+import { FaFacebook, FaTwitter, FaLinkedin, FaYoutube, FaWhatsapp, FaInstagram } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
@@ -132,8 +133,8 @@ export default function LandingPage() {
       >
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2 font-bold">
-            <div className="size-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground">
-              S
+            <div className="size-12 rounded-full  from-primary to-primary/70 flex items-center justify-center text-primary-foreground overflow-hidden">
+              <Image src="/Logo.jpg" alt="Secure Worldz" width={44} height={44} className="rounded-full object-cover" />
             </div>
             <span>Secure Worldz</span>
           </div>
@@ -174,12 +175,7 @@ export default function LandingPage() {
               {mounted && theme === "dark" ? <Sun className="size-[18px]" /> : <Moon className="size-[18px]" />}
               <span className="sr-only">Toggle theme</span>
             </Button>
-            <Link
-              href="#"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Log in
-            </Link>
+            
             <Button className="rounded-full">
               Start Free Assessment
               <ChevronRight className="ml-1 size-4" />
@@ -277,16 +273,29 @@ export default function LandingPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <p className="text-sm font-medium text-muted-foreground">Trusted by organizations building the future</p>
               <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
-                {[1, 2, 3, 4, 5].map((i) => (
+                <div className="relative h-12 md:h-16">
                   <Image
-                    key={i}
-                    src={`/placeholder-logo.svg`}
-                    alt={`Company logo ${i}`}
+                    src="/Proworldz-light.png"
+                    alt="Proworldz"
                     width={120}
                     height={60}
-                    className="h-8 w-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
+                    className="h-12 md:h-16 w-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain dark:hidden"
                   />
-                ))}
+                  <Image
+                    src="/Proworldz.png"
+                    alt="Proworldz"
+                    width={120}
+                    height={60}
+                    className="h-12 md:h-16 w-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain hidden dark:block"
+                  />
+                </div>
+                <Image
+                  src="/Amit-University.png"
+                  alt="Amit University"
+                  width={120}
+                  height={60}
+                  className="h-12 md:h-16 w-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain"
+                />
               </div>
             </div>
           </div>
@@ -618,7 +627,7 @@ export default function LandingPage() {
                         <p className="text-muted-foreground mb-1">{plan.description}</p>
                         <p className="text-sm text-muted-foreground italic mb-6">{plan.subtitle}</p>
                         <Button
-                          className={`w-full mt-auto rounded-full ${plan.popular ? "bg-primary hover:bg-primary/90" : "bg-muted hover:bg-muted/80"}`}
+                              className={`w-full mt-auto rounded-full ${plan.popular ? "bg-primary hover:bg-black hover:text-white dark:hover:bg-primary/90" : "bg-muted hover:bg-black hover:text-white dark:hover:bg-muted/80"}`}
                           variant={plan.popular ? "default" : "outline"}
                         >
                           {plan.cta}
@@ -720,14 +729,15 @@ export default function LandingPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full h-12 px-8 text-base bg-transparent border-white text-white hover:bg-white/10"
+                  className="rounded-full h-12 px-8 text-base bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary dark:border-white dark:text-black dark:hover:bg-white dark:hover:text-black dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] dark:transition-all dark:duration-300"
                 >
                   Book a Demo
                 </Button>
               </div>
               <p className="text-sm text-primary-foreground/80 mt-4">
-                Contact: <a href="mailto:hello@secure-worldz.com" className="underline">hello@secure-worldz.com</a>
+                Contact: <a href="mailto:info.secureworldz@gmail.com" className="underline">info.secureworldz@gmail.com</a>
               </p>
+              
             </motion.div>
           </div>
         </section>
@@ -737,67 +747,35 @@ export default function LandingPage() {
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
             <div className="space-y-4">
               <div className="flex items-center gap-2 font-bold">
-                <div className="size-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground">
-                  S
-                </div>
+                <div className="size-10 rounded-full  from-primary to-primary/70 flex items-center justify-center text-primary-foreground overflow-hidden">
+                <Image src="/Logo.jpg" alt="Secure Worldz" width={38} height={38} className="rounded-full object-cover" />
+              </div>
                 <span>Secure Worldz</span>
               </div>
               <p className="text-sm text-muted-foreground">
                 Secure Worldz — Building secure futures.
               </p>
               <div className="flex gap-4">
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-5"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                  </svg>
-                  <span className="sr-only">Facebook</span>
+                <Link 
+                  href="https://www.instagram.com/thecyberjai?igsh=MXUwemd1c2xqMWs0eQ==" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="size-5" />
                 </Link>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-5"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                  </svg>
-                  <span className="sr-only">Twitter</span>
+                <Link 
+                  href="https://whatsapp.com/channel/0029VaqZV815EjxpSjSrEd1T" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="WhatsApp"
+                >
+                  <FaWhatsapp className="size-5" />
                 </Link>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-5"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect width="4" height="12" x="2" y="9"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                  <span className="sr-only">LinkedIn</span>
+                <Link 
+                  href="https://youtube.com/@jai_tech1?si=q4dc3zup5rfwH-1n" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="YouTube"
+                >
+                  <FaYoutube className="size-5" />
                 </Link>
               </div>
             </div>
