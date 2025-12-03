@@ -7,9 +7,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "SaaSify - Streamline Your Workflow",
-  description: "Boost productivity, reduce costs, and scale your business with our all-in-one SaaS platform.",
-    generator: 'v0.app'
+  title: "Secure Worldz - Secure. Build. Evolve.",
+  description: "Secure Worldz is a multi‑domain tech & security company offering Cyber Security Services, Website Development, AI Development, and Proworldz Academy (our training division)."
 }
 
 export default function RootLayout({
