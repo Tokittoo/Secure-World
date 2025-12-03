@@ -18,21 +18,12 @@ import {
   Globe,
   Bot,
   GraduationCap,
-  Search,
-  Eye,
-  Lock,
-  Network,
-  Code,
-  ShoppingCart,
-  Sparkles,
-  Brain,
-  BookOpen,
+ 
   Award,
   Clock,
   FileCheck,
-  AlertTriangle,
 } from "lucide-react"
-import { FaFacebook, FaTwitter, FaLinkedin, FaYoutube, FaWhatsapp, FaInstagram } from "react-icons/fa"
+import { FaYoutube, FaWhatsapp, FaInstagram } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
