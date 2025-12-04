@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Secure Worldz - Secure. Build. Evolve.",
+  title: "SECURE WORLDZ",
   icons: {
     icon: "/Logo.jpg",
   },

@@ -6,11 +6,6 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import {
   Check,
-  ChevronRight,
-  Menu,
-  X,
-  Moon,
-  Sun,
   ArrowRight,
   Star,
   Shield,
@@ -18,7 +13,6 @@ import {
   Globe,
   Bot,
   GraduationCap,
- 
   Award,
   Clock,
   FileCheck,
@@ -28,31 +22,11 @@ import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { useTheme } from "next-themes"
+import Navbar from "@/components/Navigation"
+import { InfiniteSlider } from "@/components/infinite-slider"
+import { ProgressiveBlur } from "@/components/progressive-blur"
 
 export default function LandingPage() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
 
   const container = {
     hidden: { opacity: 0 },
@@ -130,107 +104,8 @@ export default function LandingPage() {
 
   return (
     <div className="flex min-h-[100dvh] flex-col">
-      <header
-        className={`sticky top-0 z-50 w-full backdrop-blur-lg transition-all duration-300 ${isScrolled ? "bg-background/80 shadow-sm" : "bg-transparent"}`}
-      >
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2 font-bold">
-            <div className="size-12 rounded-full  from-primary to-primary/70 flex items-center justify-center text-primary-foreground overflow-hidden">
-              <Image src="/Logo.jpg" alt="Secure Worldz" width={44} height={44} className="rounded-full object-cover" />
-            </div>
-            <span>SECURE WORLDZ</span>
-          </div>
-          <nav className="hidden md:flex gap-8">
-            <Link
-              href="#services"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Services
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              How We Work
-            </Link>
-            <Link
-              href="#testimonials"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Testimonials
-            </Link>
-            <Link
-              href="#pricing"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="#faq"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              FAQ
-            </Link>
-          </nav>
-          <div className="hidden md:flex gap-4 items-center">
-            <Button variant="ghost" size="icon" onClick={toggleTheme} className="rounded-full">
-              {mounted && theme === "dark" ? <Sun className="size-[18px]" /> : <Moon className="size-[18px]" />}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-            
-            <Button className="rounded-full">
-              Get Started Today
-              <ChevronRight className="ml-1 size-4" />
-            </Button>
-          </div>
-          <div className="flex items-center gap-4 md:hidden">
-            <Button variant="ghost" size="icon" onClick={toggleTheme} className="rounded-full">
-              {mounted && theme === "dark" ? <Sun className="size-[18px]" /> : <Moon className="size-[18px]" />}
-            </Button>
-            <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </div>
-        </div>
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-16 inset-x-0 bg-background/95 backdrop-blur-lg border-b"
-          >
-            <div className="container py-4 flex flex-col gap-4">
-              <Link href="#services" className="py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-                Services
-              </Link>
-              <Link href="#how-it-works" className="py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-                How We Work
-              </Link>
-              <Link href="#testimonials" className="py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-                Testimonials
-              </Link>
-              <Link href="#pricing" className="py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-                Pricing
-              </Link>
-              <Link href="#faq" className="py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-                FAQ
-              </Link>
-              <div className="flex flex-col gap-2 pt-2 border-t">
-                <Link href="#" className="py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-                  Log in
-                </Link>
-                <Button className="rounded-full">
-                  Get Started
-                  <ChevronRight className="ml-1 size-4" />
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </header>
-      <main className="flex-1">
+      <Navbar />
+      <main className="flex-1 pt-20 md:pt-24">
         {/* Hero Section */}
         <section className="w-full py-20 md:py-32 lg:py-40 overflow-hidden relative">
           <div className="absolute inset-0 -z-10 mx-4 md:mx-8 lg:mx-16 my-8 md:my-12 lg:my-16 h-[calc(100%-4rem)] md:h-[calc(100%-6rem)] lg:h-[calc(100%-8rem)] w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] bg-white dark:bg-black bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] [mask-image:radial-gradient(ellipse_90%_90%_at_50%_50%,black_70%,transparent_100%)]"></div>
@@ -243,26 +118,33 @@ export default function LandingPage() {
               className="text-center max-w-3xl mx-auto mb-12"
             >
               <Badge className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
-                Secure. Build. Evolve.
+              Short. Simple. Future-ready.
               </Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
                 Secure. Build. Evolve.
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto italic">
-                Smart solutions for a smarter digital world. Short. Simple. Future-ready.
+                Smart solutions for a smarter digital world. 
               </p>
               <p className="text-base text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-                Your digital infrastructure shouldn't keep you up at night. Whether you're launching a startup, scaling a business, or training the next generation of tech talent, we've got your back. We're not just another tech company throwing buzzwords around. We're builders, breakers, and problem-solvers who actually get the work done.
+                We're not just another tech company throwing buzzwords around. We're builders, breakers, and problem-solvers who actually get the work done.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="rounded-full h-12 px-8 text-base">
-                  Get Started Today
+                <Button size="lg" className="rounded-full h-12 px-8 text-base hover:bg-black hover:text-white dark:hover:bg-primary/90 dark:hover:text-black">
+                  Get Started
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full h-12 px-8 text-base">
-                  View Our Services
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full h-12 px-8 text-base bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] dark:transition-all dark:duration-300"
+                  asChild
+                >
+                  <Link href="#services">
+                    View Our Services
+                  </Link>
                 </Button>
-              </div>
+                </div>
             </motion.div>
 
 
@@ -270,37 +152,86 @@ export default function LandingPage() {
         </section>
 
         {/* Logos Section */}
-        <section className="w-full py-12 border-y bg-muted/30">
+        <section className="w-full py-12 border-y bg-muted/30 overflow-hidden">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
               <p className="text-sm font-medium text-muted-foreground">Trusted by organizations building the future</p>
-              <p className="text-xs text-muted-foreground/80 max-w-2xl mx-auto">
-                Protecting 50+ organizations across healthcare, education, fintech, and e-commerce. From early-stage startups to established enterprises, we secure what matters most.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
-                <div className="relative h-12 md:h-16">
-                  <Image
-                    src="/Proworldz-light.png"
-                    alt="Proworldz"
-                    width={120}
-                    height={60}
-                    className="h-12 md:h-16 w-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain dark:hidden"
-                  />
-                  <Image
-                    src="/Proworldz.png"
-                    alt="Proworldz"
-                    width={120}
-                    height={60}
-                    className="h-12 md:h-16 w-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain hidden dark:block"
-                  />
-                </div>
-                <Image
-                  src="/Amit-University.png"
-                  alt="Amit University"
-                  width={120}
-                  height={60}
-                  className="h-12 md:h-16 w-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain"
-                />
+            </div>
+            
+            <div className="relative w-full">
+              <div className="relative py-2">
+                <InfiniteSlider speed={25} speedOnHover={10} gap={50}>
+                  <div className="flex-none">
+                    <div className="relative flex items-center justify-center h-16 md:h-20 w-32 md:w-40">
+                      <Image
+                        src="/Proworldz-light.png"
+                        alt="Proworldz"
+                        width={160}
+                        height={80}
+                        className="max-h-16 md:max-h-20 max-w-full opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain dark:hidden"
+                      />
+                      <Image
+                        src="/Proworldz.png"
+                        alt="Proworldz"
+                        width={160}
+                        height={80}
+                        className="max-h-16 md:max-h-20 max-w-full opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain hidden dark:block"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-none">
+                    <div className="relative flex items-center justify-center h-16 md:h-20 w-32 md:w-40">
+                      <Image
+                        src="/Enyard.png"
+                        alt="Enyard"
+                        width={160}
+                        height={80}
+                        className="max-h-16 md:max-h-20 max-w-full opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain dark:hidden"
+                      />
+                      <Image
+                        src="/Enyard-dark.png"
+                        alt="Enyard"
+                        width={160}
+                        height={80}
+                        className="max-h-16 md:max-h-20 max-w-full opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain hidden dark:block"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-none">
+                    <div className="relative flex items-center justify-center h-16 md:h-20 w-32 md:w-40">
+                      <Image
+                        src="/Amit-University.png"
+                        alt="Amit University"
+                        width={160}
+                        height={80}
+                        className="max-h-16 md:max-h-20 max-w-full opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-none">
+                    <div className="relative flex items-center justify-center h-16 md:h-20 w-32 md:w-40">
+                      <Image
+                        src="/Drago-light.png"
+                        alt="Drago"
+                        width={160}
+                        height={80}
+                        className="max-h-16 md:max-h-20 max-w-full opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain dark:hidden"
+                      />
+                      <Image
+                        src="/Drago.png"
+                        alt="Drago"
+                        width={160}
+                        height={80}
+                        className="max-h-16 md:max-h-20 max-w-full opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain hidden dark:block"
+                      />
+                    </div>
+                  </div>
+                </InfiniteSlider>
+                
+                <div className="bg-gradient-to-r from-background absolute inset-y-0 left-0 w-20 pointer-events-none"></div>
+                <div className="bg-gradient-to-l from-background absolute inset-y-0 right-0 w-20 pointer-events-none"></div>
+                <ProgressiveBlur className="absolute left-0 top-0 h-full w-20" direction="left" blurIntensity={1} />
+                <ProgressiveBlur className="absolute right-0 top-0 h-full w-20" direction="right" blurIntensity={1} />
               </div>
             </div>
           </div>
@@ -320,9 +251,6 @@ export default function LandingPage() {
                 What We Do
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Our Core Divisions</h2>
-              <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Secure Worldz is a multi-domain tech and security company built for the modern digital landscape. We don't just offer services—we deliver complete solutions across four key divisions. Think of us as your all-in-one tech partner, whether you need bulletproof security, a killer website, cutting-edge AI, or training programs that actually prepare people for real-world challenges.
-              </p>
             </motion.div>
 
             <motion.div
@@ -390,14 +318,9 @@ export default function LandingPage() {
                 How We Work
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Simple onboarding, measurable outcomes</h2>
-              <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Security and development can feel overwhelming. We make it simple. Here's exactly how we work with you from day one to deliver real, measurable results.
-              </p>
             </motion.div>
 
             <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative">
-              <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2 z-0"></div>
-
               {[
                 {
                   step: "01",
@@ -449,7 +372,6 @@ export default function LandingPage() {
                   </div>
                   <h3 className="text-xl font-bold italic mb-2">{step.title}</h3>
                   <h4 className="text-lg font-semibold mb-3">{step.headline}</h4>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{step.description}</p>
                   {step.items && (
                     <div className="text-left w-full">
                       <p className="text-sm font-medium mb-2">What you get:</p>
@@ -483,9 +405,6 @@ export default function LandingPage() {
                 Why Choose Us
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why choose Secure Worldz</h2>
-              <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                There are plenty of cybersecurity firms and dev agencies out there. Here's why teams choose us and stick around.
-              </p>
             </motion.div>
 
             <div className="grid gap-6 md:grid-cols-2">
@@ -534,7 +453,6 @@ export default function LandingPage() {
                           <IconComponent className="size-5" />
                         </div>
                         <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                        <h4 className="text-base font-semibold mb-3 text-foreground">{item.headline}</h4>
                         <p className="text-muted-foreground mb-3 leading-relaxed">{item.description}</p>
                         {item.whyItMatters && (
                           <div className="mt-auto pt-3 border-t border-border/40">
@@ -565,9 +483,6 @@ export default function LandingPage() {
                 Testimonials
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">What our clients say</h2>
-              <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Don't just take our word for it. Here's what organizations we've worked with have to say about their experience.
-              </p>
             </motion.div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
@@ -660,16 +575,13 @@ export default function LandingPage() {
                 Pricing
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Plans & Pricing</h2>
-              <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Transparent pricing designed to scale with your needs. Choose a plan that fits where you are now, and upgrade as you grow. No hidden fees, no surprises.
-              </p>
             </motion.div>
 
             <div className="mx-auto max-w-5xl">
               <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
                 {[
                   {
-                    name: "Starter",
+                    name: "Silver",
                     tagline: "Ideal for early-stage startups",
                     features: [
                       "Security Health Check",
@@ -687,7 +599,7 @@ export default function LandingPage() {
                     cta: "Contact for Pricing",
                   },
                   {
-                    name: "Professional",
+                    name: "Gold",
                     tagline: "For growing teams that need continuous coverage",
                     features: [
                       "Quarterly penetration testing (web, API, infrastructure)",
@@ -707,7 +619,7 @@ export default function LandingPage() {
                     popular: true,
                   },
                   {
-                    name: "Enterprise",
+                    name: "Platinum",
                     tagline: "For organizations with complex needs",
                     features: [
                       "24/7 SOC monitoring with full MDR",
@@ -784,9 +696,6 @@ export default function LandingPage() {
               <div className="mt-8 text-center">
                 <p className="text-muted-foreground mb-2">
                   Contact sales for custom pricing and SLA details.
-                </p>
-                <p className="text-sm text-muted-foreground/80 max-w-2xl mx-auto">
-                  Need something different? We build custom packages for multi-year security partnerships, ongoing web and AI development projects, Academy training programs for corporate teams, and hybrid solutions combining multiple divisions. Get in touch and we'll design a plan that fits your exact needs.
                 </p>
               </div>
             </div>
@@ -904,24 +813,24 @@ export default function LandingPage() {
                 Whether you need bulletproof security, a website that converts, AI that saves time, or training that actually works—we're here to help. Let's talk about your goals and build something great together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                <Button size="lg" variant="secondary" className="rounded-full h-12 px-8 text-base">
+                <Button size="lg" variant="secondary" className="rounded-full h-12 px-8 text-base hover:bg-black hover:text-white dark:hover:bg-primary/90 dark:hover:text-black">
                   Schedule a Free Consultation
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full h-12 px-8 text-base bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary dark:border-white dark:text-black dark:hover:bg-white dark:hover:text-black dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] dark:transition-all dark:duration-300"
+                  className="rounded-full h-12 px-8 text-base bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary dark:border-black dark:text-black dark:hover:bg-white dark:hover:text-black dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] dark:transition-all dark:duration-300"
                 >
                   Email Us Your Requirements
                 </Button>
               </div>
               <div className="mt-6 space-y-2">
                 <p className="text-sm text-primary-foreground/80">
-                  📧 Email: <a href="mailto:info.secureworldz@gmail.com" className="underline hover:text-primary-foreground">info.secureworldz@gmail.com</a>
+                  <a href="mailto:info.secureworldz@gmail.com" className="underline hover:text-primary-foreground">info.secureworldz@gmail.com</a>
                 </p>
                 <p className="text-xs text-primary-foreground/70">
-                  🌐 Serving clients globally
+                  Serving clients globally
             </p>
           </div>
 
@@ -940,7 +849,7 @@ export default function LandingPage() {
                 <span>SECURE WORLDZ</span>
           </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Secure Worldz is a multi-domain technology and cybersecurity company dedicated to helping organizations secure, build, and evolve in the digital world. From penetration testing to web development, AI automation to professional training, we deliver practical solutions that drive real results.
+              Smart solutions for a smarter digital world.
               </p>
               <div className="flex gap-4">
                 <Link 
@@ -1031,36 +940,7 @@ export default function LandingPage() {
                 </li>
               </ul>
             </div>
-            <div className="space-y-4">
-              <h4 className="text-sm font-bold">Resources</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Free Security Tools
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Blog & Articles
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Whitepapers & Guides
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Webinars & Events
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Security Newsletter
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            
             <div className="space-y-4">
               <h4 className="text-sm font-bold">Legal</h4>
               <ul className="space-y-2 text-sm">
@@ -1088,17 +968,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4 border-t border-border/40 pt-8">
-            <div className="space-y-4">
-              <h4 className="text-sm font-bold">Contact</h4>
-              <ul className="space-y-2 text-sm">
-                <li className="text-muted-foreground">
-                  📧 Email: <a href="mailto:info.secureworldz@gmail.com" className="hover:text-foreground transition-colors underline">info.secureworldz@gmail.com</a>
-                </li>
-                <li className="text-muted-foreground">
-                  🌐 Serving clients globally
-                </li>
-              </ul>
-            </div>
+            
           </div>
           <div className="flex flex-col gap-4 sm:flex-row justify-between items-center border-t border-border/40 pt-8">
             <p className="text-xs text-muted-foreground">
