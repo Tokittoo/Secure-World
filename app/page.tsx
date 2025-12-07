@@ -118,13 +118,13 @@ export default function LandingPage() {
               className="text-center max-w-3xl mx-auto mb-12"
             >
               <Badge className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
-              Short. Simple. Future-ready.
+                Short. Simple. Future-ready.
               </Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
                 Secure. Build. Evolve.
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto italic">
-                Smart solutions for a smarter digital world. 
+                Smart solutions for a smarter digital world.
               </p>
               <p className="text-base text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
                 We're not just another tech company throwing buzzwords around. We're builders, breakers, and problem-solvers who actually get the work done.
@@ -144,7 +144,7 @@ export default function LandingPage() {
                     View Our Services
                   </Link>
                 </Button>
-                </div>
+              </div>
             </motion.div>
 
 
@@ -157,7 +157,7 @@ export default function LandingPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
               <p className="text-sm font-medium text-muted-foreground">Trusted by organizations building the future</p>
             </div>
-            
+
             <div className="relative w-full">
               <div className="relative py-2">
                 <InfiniteSlider speed={25} speedOnHover={10} gap={50}>
@@ -211,6 +211,17 @@ export default function LandingPage() {
                   <div className="flex-none">
                     <div className="relative flex items-center justify-center h-16 md:h-20 w-32 md:w-40">
                       <Image
+                        src="/FC-Kovalam.png"
+                        alt="FC Kovalam"
+                        width={160}
+                        height={80}
+                        className="max-h-16 md:max-h-20 max-w-full opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-none">
+                    <div className="relative flex items-center justify-center h-16 md:h-20 w-32 md:w-40">
+                      <Image
                         src="/Drago-light.png"
                         alt="Drago"
                         width={160}
@@ -225,9 +236,10 @@ export default function LandingPage() {
                         className="max-h-16 md:max-h-20 max-w-full opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 object-contain hidden dark:block"
                       />
                     </div>
+
                   </div>
                 </InfiniteSlider>
-                
+
                 <div className="bg-gradient-to-r from-background absolute inset-y-0 left-0 w-20 pointer-events-none"></div>
                 <div className="bg-gradient-to-l from-background absolute inset-y-0 right-0 w-20 pointer-events-none"></div>
                 <ProgressiveBlur className="absolute left-0 top-0 h-full w-20" direction="left" blurIntensity={1} />
@@ -501,24 +513,24 @@ export default function LandingPage() {
                   author: "Director & Coach",
                   role: "FC Kovalam",
                   company: "Sports Academy",
-      rating: 5,
-    },
-    {
+                  rating: 5,
+                },
+                {
                   quote:
                     "AI automation from Secure Worldz reduced our manual workload by almost 60%—absolute game changer. Tasks that used to take hours now happen automatically. The ROI was clear within the first month, and we're already expanding to other departments.",
                   author: "Anas",
                   role: "Student",
                   company: "Early Adopter & Tech Enthusiast",
-      rating: 5,
-    },
-    {
+                  rating: 5,
+                },
+                {
                   quote:
                     "Proworldz Academy helped me build real cyber security skills with practical labs and personal guidance. I went from knowing almost nothing about security to landing an internship in just four months. The hands-on approach and mentorship made all the difference.",
                   author: "Ajay",
                   role: "Student",
                   company: "Recent Academy Graduate",
-      rating: 5,
-    },
+                  rating: 5,
+                },
               ].map((testimonial, i) => (
                 <motion.div
                   key={i}
@@ -683,7 +695,7 @@ export default function LandingPage() {
                           </div>
                         )}
                         <Button
-                              className={`w-full mt-auto rounded-full ${plan.popular ? "bg-primary hover:bg-black hover:text-white dark:hover:bg-primary/90" : "bg-muted hover:bg-black hover:text-white dark:hover:bg-muted/80"}`}
+                          className={`w-full mt-auto rounded-full ${plan.popular ? "bg-primary hover:bg-black hover:text-white dark:hover:bg-primary/90" : "bg-muted hover:bg-black hover:text-white dark:hover:bg-muted/80"}`}
                           variant={plan.popular ? "default" : "outline"}
                         >
                           {plan.cta}
@@ -700,7 +712,7 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-      </section>
+        </section>
 
         {/* FAQ Section */}
         <section id="faq" className="w-full py-20 md:py-32">
@@ -788,9 +800,9 @@ export default function LandingPage() {
                   </motion.div>
                 ))}
               </Accordion>
+            </div>
           </div>
-          </div>
-      </section>
+        </section>
 
         {/* CTA Section */}
         <section className="w-full py-20 md:py-32 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground relative overflow-hidden">
@@ -808,7 +820,7 @@ export default function LandingPage() {
             >
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
                 Ready to secure your product and customers?
-            </h2>
+              </h2>
               <p className="mx-auto max-w-[700px] text-primary-foreground/90 md:text-lg leading-relaxed">
                 Whether you need bulletproof security, a website that converts, AI that saves time, or training that actually works—we're here to help. Let's talk about your goals and build something great together.
               </p>
@@ -831,8 +843,8 @@ export default function LandingPage() {
                 </p>
                 <p className="text-xs text-primary-foreground/70">
                   Serving clients globally
-            </p>
-          </div>
+                </p>
+              </div>
 
             </motion.div>
           </div>
@@ -844,30 +856,30 @@ export default function LandingPage() {
             <div className="space-y-4">
               <div className="flex items-center gap-2 font-bold">
                 <div className="size-10 rounded-full  from-primary to-primary/70 flex items-center justify-center text-primary-foreground overflow-hidden">
-                <Image src="/Logo.jpg" alt="Secure Worldz" width={38} height={38} className="rounded-full object-cover" />
-              </div>
+                  <Image src="/Logo.jpg" alt="Secure Worldz" width={38} height={38} className="rounded-full object-cover" />
+                </div>
                 <span>SECURE WORLDZ</span>
-          </div>
+              </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-              Smart solutions for a smarter digital world.
+                Smart solutions for a smarter digital world.
               </p>
               <div className="flex gap-4">
-                <Link 
-                  href="https://www.instagram.com/thecyberjai?igsh=MXUwemd1c2xqMWs0eQ==" 
+                <Link
+                  href="https://www.instagram.com/thecyberjai?igsh=MXUwemd1c2xqMWs0eQ=="
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="Instagram"
                 >
                   <FaInstagram className="size-5" />
                 </Link>
-                <Link 
-                  href="https://whatsapp.com/channel/0029VaqZV815EjxpSjSrEd1T" 
+                <Link
+                  href="https://whatsapp.com/channel/0029VaqZV815EjxpSjSrEd1T"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="WhatsApp"
                 >
                   <FaWhatsapp className="size-5" />
                 </Link>
-                <Link 
-                  href="https://youtube.com/@jai_tech1?si=q4dc3zup5rfwH-1n" 
+                <Link
+                  href="https://youtube.com/@jai_tech1?si=q4dc3zup5rfwH-1n"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="YouTube"
                 >
@@ -940,7 +952,7 @@ export default function LandingPage() {
                 </li>
               </ul>
             </div>
-            
+
             <div className="space-y-4">
               <h4 className="text-sm font-bold">Legal</h4>
               <ul className="space-y-2 text-sm">
@@ -968,7 +980,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4 border-t border-border/40 pt-8">
-            
+
           </div>
           <div className="flex flex-col gap-4 sm:flex-row justify-between items-center border-t border-border/40 pt-8">
             <p className="text-xs text-muted-foreground">
